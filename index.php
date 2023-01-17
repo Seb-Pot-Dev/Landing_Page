@@ -100,7 +100,31 @@
         </p>
     </div>
     <div class="offers">
-        <article class="offer">
+            <?php //require db functions
+
+            require_once('db-functions.php');
+
+            $store = findAll();
+            foreach ($store as $product) {
+                ?>
+                
+                    <article>
+                        <a  href="product.php?id=<?= $product['id'] ?>">
+                            <div >
+                                <img src="<?= $product['image_url'] ?>" alt="<?= ucFirst($product['name']) ?>">
+                            </div>
+                            <div class="nameAndPrice">
+                                <a class="productName" href="product.php?id=<?= $product['id'] ?>"> <?= ucFirst($product['name']); ?></a>
+                                <?php // l'expression "<?=" est equivalent a <?php echo 
+                                ?>
+                                <p class='price'>€<?= $product['price']; ?></p>
+                            </div>
+                        </a>
+                    </article>
+                <?php } ?>
+        <!-- <article class="offer">
+
+
             <h5>
                 Starter
             </h5>
@@ -151,7 +175,7 @@
             </li>
         </article>
     </div>
-    </section>
+    </section> -->
 
     </main>
 </body>
