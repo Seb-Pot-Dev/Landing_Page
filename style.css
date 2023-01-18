@@ -7,7 +7,7 @@
 *{
     margin: 0;
     padding: 0;
-
+    color: black;
 }
 body {
   color: var(--secondary-color);
@@ -190,17 +190,37 @@ section#PRICING h2{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    max-width: 100%
 }
-article.offer{
+.offers a.offer-details-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px; 
+  padding: 10px; 
+  list-style-type: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  min-width:fit-content;
+  width: 30%;
+  height: auto;}
+/* .offer-details-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px;
-    padding: 10px;
+    text-align: center;
+    margin: 10px; 
+    padding: 10px; 
+    list-style-type: none;
     border: 1px solid black;
     border-radius: 5px;
-    list-style-type: none;
-}
+    color: rgb(0, 0, 0);
+    min-width:fit-content;
+    width: 30%;
+    height: auto;
+} */
 h5{
     font-weight: 900;
-}
+  }

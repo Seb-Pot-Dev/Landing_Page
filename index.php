@@ -107,20 +107,18 @@
             $store = findAll();
             foreach ($store as $product) {
                 ?>
-                
-                    <article>
-                        <a  href="product.php?id=<?= $product['id'] ?>">
-                            <div >
-                                <img src="<?= $product['image_url'] ?>" alt="<?= ucFirst($product['name']) ?>">
+                <a class="offer-details-container" href="product.php?id=<?= $product['id'] ?>">
+                            <div>
+                                <?php // l'expression "<?=" est equivalent a <?php echo ?>
+                                <h5><?= ucFirst($product['name']); ?></h5>
+                                <p class='offer-details-item'>€ <?= $product['price'];?></p>
+                                <p class='offer-details-item'>Bandwidth: <?= $product['bandwidth'];?>Mbps</p>
+                                <p class='offer-details-item'>Online space: <?= $product['onlinespace']; ?>Go</p>
+                                <p class='offer-details-item'>Support xx: <?= $product['support']; ?></p>
+                                <p class='offer-details-item'>Domain : <?= $product['domain']; ?></p>
+                                <p class='offer-details-item'>Sugar : <?= $product['sugar']; ?></p>
                             </div>
-                            <div class="nameAndPrice">
-                                <a class="productName" href="product.php?id=<?= $product['id'] ?>"> <?= ucFirst($product['name']); ?></a>
-                                <?php // l'expression "<?=" est equivalent a <?php echo 
-                                ?>
-                                <p class='price'>€<?= $product['price']; ?></p>
-                            </div>
-                        </a>
-                    </article>
+                    </a>
                 <?php } ?>
         <!-- <article class="offer">
 
