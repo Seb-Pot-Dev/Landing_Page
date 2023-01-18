@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +18,10 @@
         <header>
             <nav>
                 <h1><a href="index.html" class="brand-nav-home">Cookies</a></h1>
+                <!-- accès admin.php -->
+                <a href="admin.php"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+
+
                 <ul class="nav-container">
                     <a href="#HOME" class="nav-items">HOME</a>
                     <a href="#FEATURES" class="nav-items">FEATURES</a>
@@ -24,7 +31,19 @@
                     <a href="#ABOUT" class="nav-items">ABOUT</a>
                     <a href="#BLOG" class="nav-items">BLOG</a>
                     <a href="#CONTACT" class="nav-items">CONTACT</a>
+                    <!-- accès panier -->
                 </ul>
+                <a class="nav-items" href='recap.php'>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p class="basket"> (<?php
+                                        $total = 0;
+                                        if (isset($_SESSION['products'])) {
+                                            foreach ($_SESSION['products'] as $index => $product) {
+                                                $total += $product['qtt'];
+                                            }
+                                        }
+                                        echo $total ?>)</p>
+                </a>
                 <ul class="socials">
                     <a href=""><i class="fa-brands fa-facebook"></i></a>
                     <a href=""><i class="fa-brands fa-twitter"></i></a>
@@ -89,38 +108,39 @@
                 <img src="PngItem_5364585.png" alt="creativity">
             </div>
         </div>
-    <div class="our-pricing">
-        <h2>
-            Our pricing
-        </h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem cum quod dicta perspiciatis? 
-            Ab, debitis aspernatur necessitatibus dolorum corporis optio alias aliquid doloremque dolore, 
-            quaerat dolores officiis voluptatum, aperiam reiciendis?
-        </p>
-    </div>
-    <div class="offers">
+        <div class="our-pricing">
+            <h2>
+                Our pricing
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem cum quod dicta perspiciatis?
+                Ab, debitis aspernatur necessitatibus dolorum corporis optio alias aliquid doloremque dolore,
+                quaerat dolores officiis voluptatum, aperiam reiciendis?
+            </p>
+        </div>
+        <div class="offers">
             <?php //require db functions
 
             require_once('db-functions.php');
 
             $store = findAll();
             foreach ($store as $product) {
-                ?>
+            ?>
                 <a class="offer-details-container" href="product.php?id=<?= $product['id'] ?>">
-                            <div>
-                                <?php // l'expression "<?=" est equivalent a <?php echo ?>
-                                <h5><?= ucFirst($product['name']); ?></h5>
-                                <p class='offer-details-item'>€ <?= $product['price'];?></p>
-                                <p class='offer-details-item'>Bandwidth: <?= $product['bandwidth'];?>Mbps</p>
-                                <p class='offer-details-item'>Online space: <?= $product['onlinespace']; ?>Go</p>
-                                <p class='offer-details-item'>Support xx: <?= $product['support']; ?></p>
-                                <p class='offer-details-item'>Domain : <?= $product['domain']; ?></p>
-                                <p class='offer-details-item'>Sugar : <?= $product['sugar']; ?></p>
-                            </div>
-                    </a>
-                <?php } ?>
-        <!-- <article class="offer">
+                    <?php // l'expression "<?=" est equivalent a <?php echo 
+                        ?>
+                        <h5><?= ucFirst($product['name']); ?></h5>
+                        <p class='offer-details-item'>€ <?= $product['price']; ?></p>
+                    <ul class="offer-details-list">
+                        <div class="details-box"><p class='offer-details-item'>Bandwidth: </p> <p class='offer-details-item'> <?= $product['bandwidth']; ?> Mbps</p></div>
+                        <div class="details-box"><p class='offer-details-item'>Online space: </p class='offer-details-item'> <p> <?= $product['onlinespace']; ?> Go</p></div>
+                        <div class="details-box"><p class='offer-details-item'>Support: </p><p class='offer-details-item'> <?= $product['support']; ?></p></div>
+                        <div class="details-box"><p class='offer-details-item'>Domain: </p><p class='offer-details-item'> <?= $product['domain']; ?></p></div>
+                        <div class="details-box"><p class='offer-details-item'>Sugar: </p><p class='offer-details-item'> <?= $product['sugar']; ?></p></div>
+                    </ul>
+                </a>
+            <?php } ?>
+            <!-- <article class="offer">
 
 
             <h5>
@@ -175,7 +195,7 @@
     </div>
     </section> -->
 
-    </main>
+            </main>
 </body>
 
 </html>

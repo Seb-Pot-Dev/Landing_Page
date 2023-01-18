@@ -15,17 +15,11 @@ session_start();
 
 <body>
     <header>
-    </header>
-<div class="body">
-    <main>
         <nav>
-            <a href="index.php"><i class="fa-solid fa-house"></i></a>
-            <a href="admin.php"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
-            <form action="search.php" method="post">
-                <input type="text" name="search">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-            <a href="recap.php"><i class="fa-solid fa-cart-shopping"></i>(<?php
+            <ul class="nav-container">
+            <a href="index.php" class="nav-items-admin"><i class="fa-solid fa-house"></i></a>
+            <a href="admin.php" class="nav-items-admin"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+            <a href="recap.php" class="nav-items-admin"><i class="fa-solid fa-cart-shopping"></i>(<?php
                                                                             $total = 0;
                                                                             if (isset($_SESSION['products'])) {
                                                                                 foreach ($_SESSION['products'] as $index => $product) {
@@ -33,7 +27,11 @@ session_start();
                                                                                 }
                                                                             }
                                                                             echo $total ?>)</a>
-        </nav>
+            </ul>    
+    </nav>
+    </header>
+<div class="body">
+    <main>
 
         <?php
         // Check if a message is set in the session
@@ -54,46 +52,46 @@ session_start();
         }
         ?>
         <!-- CONTAINER -->
-        <div id="container">
+        <div class="admin-action">
             <h1>Ajouter un produit dans ma BDD</h1>
-            <form action="traitement.php?action=addProductToDatabase" method="post">
-                <p class='form'>
+            <form class="form-container" action="traitement.php?action=addProductToDatabase" method="post">
+                <p class='form-items'>
                     <label>
                         Nom du produit :
                         <input type="text" name="name">
                     </label>
                 </p>
-                <p class='form'>
+                <p class='form-items'>
                     <label>
                         Prix :
                         <input type="number" name="price">
                     </label>
                 </p>
-                <p class='form'>
+                <p class='form-items'>
                     <label>
                         Bandwidth :
                         <input type="number" name="bandwidth" >
                     </label>
                 </p>
-                <p class='form'>
+                <p class='form-items'>
                     <label>
                         Online space :
                         <input type="text" name="online space">
                     </label>
                 </p>
-                <p class='form'>
+                <p class='form-items'>
                     <label>
                     support :
                         <input type="text" name="support" >
                     </label>
                 </p>
-                <p class='form'>
+                <p class='form-items'>
                     <label>
                     Domain :
                         <input type="text" name="Domain" >
                     </label>
                 </p>
-                <p class='form'>
+                <p class='form-items'>
                     <label>
                     Sugar :
                         <input type="text" name="Sugar" >
@@ -105,8 +103,8 @@ session_start();
             </form>
         </div>
         
-        <button id="basket" onclick="location.href='recap.php'" type="button">
-            Mon panier (<?php
+        <button class="basket" onclick="location.href='recap.php'" type="button">
+        <i class="fa-solid fa-cart-shopping"></i> (<?php
                 $total = 0;
                 if (isset($_SESSION['products'])) {
                     foreach ($_SESSION['products'] as $index => $product) {

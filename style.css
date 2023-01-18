@@ -3,6 +3,7 @@
   --primary-color: #1294b8;
   --secondary-color: white;
   --tertiary-color: black;
+  --fourthiary-color: rgb(215, 215, 215);
 }
 *{
     margin: 0;
@@ -52,7 +53,7 @@ nav h1 {
     color: var(--secondary-color);
     text-decoration: none;
     padding: 10px;
-    display: inline-block;
+    display: flex
 }
 .nav-items:hover {
     color: var(--tertiary-color);
@@ -93,12 +94,7 @@ section#HOME {
   max-width: 15%;
   height: auto;
 }
-input[type="text"] {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: none;
-  padding: 10px;
-}
+
 
 .illustration-home img {
   width: 100%;
@@ -121,7 +117,7 @@ input {
 }
 
 input:hover {
-  background-color: grey;
+  background-color: rgb(227, 227, 227);
   color: var(--primary-color);
   border-radius: 10px;
 }
@@ -191,22 +187,8 @@ section#PRICING h2{
     flex-direction: row;
     justify-content: center;
     max-width: 100%
-}
-.offers a.offer-details-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 10px; 
-  padding: 10px; 
-  list-style-type: none;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: rgb(0, 0, 0);
-  min-width:fit-content;
-  width: 30%;
-  height: auto;}
-/* .offer-details-container{
+  }
+  .offers a.offer-details-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -214,13 +196,116 @@ section#PRICING h2{
     margin: 10px; 
     padding: 10px; 
     list-style-type: none;
-    border: 1px solid black;
-    border-radius: 5px;
-    color: rgb(0, 0, 0);
     min-width:fit-content;
     width: 30%;
     height: auto;
-} */
-h5{
+    background-color:#ffffff;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+  }
+  h5{
     font-weight: 900;
   }
+  
+  ul.offer-details-list{
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    justify-content: space-between;
+  }
+  div.details-box{
+    display: flex;
+    flex-direction: flex-start;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 5px;
+  }
+/* -- ADMIN -- */
+.admin-action{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: fit-content;
+}
+form.form-container{
+  background-color:  var(--fourthiary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  
+}
+.form-items{
+display: flex;
+justify-content: flex-end;
+align-items: flex-end;
+
+
+}
+.form-items label{
+  color:  var(--primary-color);
+
+}
+.nav-items-admin {
+  color: var(--tertiary-color);
+  text-decoration: none;
+  padding: 10px;
+  display: flex
+}
+
+/* -- BASKET -- */
+
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f98f;
+}
+
+.minusAndPlus {
+  display: flex;
+  align-items: center;
+}
+.minusAndPlus a{
+  color: black;
+}
+
+.minus, .plus {
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.deleteProduct {
+  float: right;
+  cursor: pointer;
+  color: red;
+}
+
+.totalProduct {
+  font-weight: bold;
+}
+
+.deleteBasketCell, .backHomeCell {
+  text-align: center;
+}
+td.deleteBasketCell a, td.backHomeCell a.backHome{
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
+  /* border: none; */
+  padding: 4px;
+  cursor: pointer;
+}

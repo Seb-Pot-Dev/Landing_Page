@@ -61,11 +61,11 @@ function insertProduct($name, $price, $bandwidth, $onlinespace, $support, $domai
 {
     // Appel de la fonction de connexion à la base de données
     $db = dbFunction();
-    // Requête SQL pour insérer un nouveau produit dans la table offers
-    $sqlTest = 'INSERT INTO offers (name, price, bandwidth, onlinespace, support, domain, sugar)
+    // Définition d'une var = requête SQL pour insérer un nouveau produit dans la table offers
+    $sqlInsert = 'INSERT INTO offers (name, price, bandwidth, onlinespace, support, domain, sugar)
     VALUES (:name, :price, :bandwidth, :onlinespace, :support, :domain, :sugar)';
     // Préparation de la requête
-    $storeStatement = $db->prepare($sqlTest);
+    $storeStatement = $db->prepare($sqlInsert);
     // Exécution de la requête en passant les informations du produit en paramètre
     $storeStatement->execute([':name' => $name, ':price' => $price, ':bandwidth' => $bandwidth, ':onlinespace' => $onlinespace, ':support' => $support, ':domain' => $domain, ':sugar' => $sugar]);
     // Récupération des résultats
@@ -74,4 +74,22 @@ function insertProduct($name, $price, $bandwidth, $onlinespace, $support, $domai
     return $store;
 }
 
+
 // Fonction pour modifier le contenu d'un produit
+function modifyProduct($id, $price){
+    //Appel de la fonction de connexion à la base de données
+    $db = dbFunction();
+    $sqlUpdate = "UPDATE offers SET price='$price' WHERE id=$id";
+
+    //Preparation de la requête
+    $statement = $db->prepare($sqlUpdate);
+    
+    //Execution de la requête
+    $statement->execute();
+
+        // Récupération des résultats
+        $store = $statement->fetch();
+        // Retourne les résultats
+        return $store;
+
+}

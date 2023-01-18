@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="recapStyle.css">
+    <link rel="stylesheet" href="style.css">
     <title>Récapitulatif des produits</title>
 
 
@@ -19,19 +19,19 @@ session_start();
 
     //part 1: Display ----------
     if (isset($_SESSION['messageQtt']) || isset($_SESSION['messageDelete']) || isset($_SESSION['messageDeleteAll'])) {
-        // Display the message with class='message' style and an id of 'messageQtt'
+        // Display the message with class='message' style and an class of 'messageQtt'
         if (isset($_SESSION['messageQtt'])) {
-            echo '<div class="message" id="messageQtt">' . $_SESSION['messageQtt'] . '</div>';
+            echo '<div class="message" class="messageQtt">' . $_SESSION['messageQtt'] . '</div>';
             unset($_SESSION['messageQtt']);
         }
-        // Display the message with class='message' style and an id of 'messageDelete'
+        // Display the message with class='message' style and an class of 'messageDelete'
         if (isset($_SESSION['messageDelete'])) {
-            echo '<div class="message" id="messageDelete">' . $_SESSION['messageDelete'] . '</div>';
+            echo '<div class="message" class="messageDelete">' . $_SESSION['messageDelete'] . '</div>';
             unset($_SESSION['messageDelete']);
         }
-        // Display the message with class='message' style and an id of 'messageDeleteAll'
+        // Display the message with class='message' style and an class of 'messageDeleteAll'
         if (isset($_SESSION['messageDeleteAll'])) {
-            echo '<div class="message" id="messageDeleteAll">' . $_SESSION['messageDeleteAll'] . '</div>';
+            echo '<div class="message" class="messageDeleteAll">' . $_SESSION['messageDeleteAll'] . '</div>';
             unset($_SESSION['messageDeleteAll']);
         }
 
@@ -78,8 +78,8 @@ session_start();
             "<td>" . $index . "</td>",
             "<td>" . $product['name'] . "</td>",
             "<td>" . number_format($product['price'], 2, ",", "&nbsp;") . "&nbsp;€</td>", /*number_format allows to modify the display of a numerical value according to different parameters as: number_format(variable à modifier, nombre de décimales souhaité,caractère séparateur décimal, caractère séparateur de milliers) */
-            "<td><span id='minusAndPlus'><span id='minus'><a href='traitement.php?action=minusQtt&id=$index'>-</a></span>" . $product['qtt'] . "<span id='plus'><a href='traitement.php?action=addQtt&id=$index'>+</a></td></span></span>",
-            "<td><span id='totalProduct'>" . number_format($product['total'], 2, ",", "&nbsp;") . "&nbsp;€<span id='deleteProduct'><a href='traitement.php?action=deleteProduct&id=$index'>suppr</a></span></span> </td>",
+            "<td><span class='minusAndPlus'><span class='minus'><a href='traitement.php?action=minusQtt&class=$index'>-</a></span>" . $product['qtt'] . "<span class='plus'><a href='traitement.php?action=addQtt&class=$index'>+</a></td></span></span>",
+            "<td><span class='totalProduct'>" . number_format($product['total'], 2, ",", "&nbsp;") . "&nbsp;€<span class='deleteProduct'><a href='traitement.php?action=deleteProduct&class=$index'>suppr</a></span></span> </td>",
             "</tr>";
             // var_dump($index);die;
             //We add the product total price to $totalGeneral, wich will be done for each elements "product" of the array thanks to the foreach boucle.
@@ -93,8 +93,8 @@ session_start();
         "<td><strong>" . number_format($totalGeneral, 2, ",", "&nbsp;") . "&nbsp;€</strong></td>",
         "</tr>",
         "<tr>",
-        "<td id='deleteBasketCell' colspan=2><span id='deleteBasket'><a href='traitement.php?action=deleteBasket&id=$index'>Vider le panier</a></span></td>",
-        "<td id='backHomeCell' colspan=1><button class='backHome' onclick='location.href=`index.php`' type='button'>Retour a l'accueil</button></td>",
+        "<td class='deleteBasketCell' colspan=2><a class='deleteBasket'><a href='traitement.php?action=deleteBasket&class=$index'>Vider le panier</a></a></td>",
+        "<td class='backHomeCell' colspan=1><a class='backHome' href=`index.php`' type='button'>Retour a l'accueil</a></td>",
 
         "<td colspan=2>Passer au paiement</td>",
         "</tr>",
