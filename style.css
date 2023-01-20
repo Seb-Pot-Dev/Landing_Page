@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     color: black;
-}
+    font-family: 'Poppins', sans-serif;}
 body {
   color: var(--secondary-color);
 }
@@ -43,6 +43,7 @@ nav h1 {
 .brand-nav-home {
     color: var(--secondary-color);
     text-decoration: none;
+    font-size:xx-large;
 }
 
 .brand-nav-home:hover {
@@ -75,7 +76,7 @@ nav h1 {
   font-size: 1.5em;
 }
 /*-- HOME -- */
-section.background{
+section.background-gradient{
     background: radial-gradient(circle at center, rgb(192, 239, 254), #1294b8);
 }
 section#HOME {
@@ -135,6 +136,8 @@ section#PRICING{
     display: flex;
     flex-direction: column;
     color: var(--tertiary-color);
+    background-color: #F3F3F3;
+
 }
 div.pricing-head{
     display: flex;
@@ -173,6 +176,7 @@ section#PRICING h2{
     margin-bottom: 40px;
 }
 /*-- PRICING --*/
+
 .our-pricing{
     display: flex;
     flex-direction: column;
@@ -188,7 +192,7 @@ section#PRICING h2{
     justify-content: center;
     max-width: 100%
   }
-  .offers a.offer-details-container{
+  div.offers a.offer-details-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -199,12 +203,35 @@ section#PRICING h2{
     min-width:fit-content;
     width: 30%;
     height: auto;
+    /* min-height: 400px; */
     background-color:#ffffff;
-    border: 1px solid black;
-    border-radius: 5px;
+    /* border: 1px solid black; */
+    border-radius: 8px;
     color: rgb(0, 0, 0);
   }
-  h5{
+
+  div.offers a.offer-details-container:hover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px; 
+    padding: 10px; 
+    list-style-type: none;
+    min-width:fit-content;
+    /* width: 30%; */
+    height: auto;
+    background-color:#eefbff;
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    /* width: 40%; */
+    /* scale: 1.10; */
+    translate: 0px -10px;
+    /* Avec deux valeurs <length-percentage> */
+    transition: translate 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;  } 
+    h5{
     font-weight: 900;
   }
   
@@ -220,6 +247,28 @@ section#PRICING h2{
     justify-content: space-between;
     max-width: 100%;
     margin: 5px;
+  }
+  .big-price-container{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .big-price-container:not(p.big-blue-price){
+    font-size: small;
+    color: darkgray;
+  }
+  .big-blue-price{
+    /* display: flex; */
+    font-size: xx-large;
+    color: var(--primary-color);
+  }
+  .fa-regular{
+    color:green;
+    margin: 0px 5px;
+  }
+  .red-fa-regular{
+    color: red;
+    margin: 0px 5px;
   }
 /* -- ADMIN -- */
 .admin-action{

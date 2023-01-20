@@ -76,10 +76,10 @@ function insertProduct($name, $price, $bandwidth, $onlinespace, $support, $domai
 
 
 // Fonction pour modifier le contenu d'un produit
-function modifyProduct($id, $price){
+function modifyProduct($name, $price){
     //Appel de la fonction de connexion à la base de données
     $db = dbFunction();
-    $sqlUpdate = "UPDATE offers SET price='$price' WHERE id=$id";
+    $sqlUpdate = "UPDATE offers SET price='$price' WHERE name='$name'";
 
     //Preparation de la requête
     $statement = $db->prepare($sqlUpdate);

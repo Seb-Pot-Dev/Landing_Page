@@ -9,12 +9,17 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
+    <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/a45e9c27c8.js" crossorigin="anonymous"></script>
+    <!-- Google fonts : Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>Landing Page</title>
 </head>
 
 <body>
-    <section class="background">
+    <section class="background-gradient">
         <header>
             <nav>
                 <h1><a href="index.html" class="brand-nav-home">Cookies</a></h1>
@@ -31,8 +36,8 @@ session_start();
                     <a href="#ABOUT" class="nav-items">ABOUT</a>
                     <a href="#BLOG" class="nav-items">BLOG</a>
                     <a href="#CONTACT" class="nav-items">CONTACT</a>
-                    <!-- accès panier -->
                 </ul>
+                <!-- accès panier -->
                 <a class="nav-items" href='recap.php'>
                     <i class="fa-solid fa-cart-shopping"></i>
                     <p class="basket"> (<?php
@@ -44,6 +49,8 @@ session_start();
                                         }
                                         echo $total ?>)</p>
                 </a>
+                <!-- nav socials -->
+
                 <ul class="socials">
                     <a href=""><i class="fa-brands fa-facebook"></i></a>
                     <a href=""><i class="fa-brands fa-twitter"></i></a>
@@ -51,12 +58,15 @@ session_start();
                 </ul>
             </nav>
         </header>
+
         <main>
+            <!-- SECTION HOME -->
+
             <section id="HOME">
                 <div class="hello">
-                    <h1>
+                    <h2>
                         We are StartUp Creative Cookies Agency
-                    </h1>
+                    </h2>
                     <p>
                         Carefully crafter after analysing the needs
                         of different industries and the design achieves a great balance between
@@ -72,7 +82,10 @@ session_start();
                     <img src="illustration.svg" alt="illustration-home">
                 </div>
             </section>
-    </section>
+            </section>
+
+    <!-- SECTION PRICING -->
+
     <section id="PRICING">
         <div class="pricing-head">
             <div class="pricing-article">
@@ -128,73 +141,39 @@ session_start();
             ?>
                 <a class="offer-details-container" href="product.php?id=<?= $product['id'] ?>">
                     <?php // l'expression "<?=" est equivalent a <?php echo 
-                        ?>
-                        <h5><?= ucFirst($product['name']); ?></h5>
-                        <p class='offer-details-item'>€ <?= $product['price']; ?></p>
+                    ?>
+                    <h5><?= ucFirst($product['name']); ?></h5>
+                    <div class='big-price-container'><p class="big-blue-price">€ <?= $product['price']; ?></p>/month</div>
                     <ul class="offer-details-list">
-                        <div class="details-box"><p class='offer-details-item'>Bandwidth: </p> <p class='offer-details-item'> <?= $product['bandwidth']; ?> Mbps</p></div>
-                        <div class="details-box"><p class='offer-details-item'>Online space: </p class='offer-details-item'> <p> <?= $product['onlinespace']; ?> Go</p></div>
-                        <div class="details-box"><p class='offer-details-item'>Support: </p><p class='offer-details-item'> <?= $product['support']; ?></p></div>
-                        <div class="details-box"><p class='offer-details-item'>Domain: </p><p class='offer-details-item'> <?= $product['domain']; ?></p></div>
-                        <div class="details-box"><p class='offer-details-item'>Sugar: </p><p class='offer-details-item'> <?= $product['sugar']; ?></p></div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><i class="fa-regular fa-circle-check"></i>Bandwidth: </p>
+                            <p class='offer-details-item'> <?= $product['bandwidth']; ?> Mbps</p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><i class="fa-regular fa-circle-check"></i>Online space: </p>
+                            <p> <?= $product['onlinespace']; ?> Go</p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><?php if ($product['support']=='Yes')
+                            {echo'<i class="fa-regular fa-circle-check"></i>';}
+                            else{echo'<i class="fa-regular fa-circle-xmark" style="color:red;"></i>';}?>Support: </p>
+                            <p class='offer-details-item'> <?= $product['support']; ?></p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><?php if ($product['domain']>0)
+                            {echo'<i class="fa-regular fa-circle-check"></i>';}
+                            else{echo'<i class="fa-regular fa-circle-xmark" style="color:red;"></i>';}?>Domain: </p>
+                            <p class='offer-details-item'> <?= $product['domain']; ?></p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><?php if ($product['sugar']=='Yes')
+                            {echo'<i class="fa-regular fa-circle-check"></i>';}
+                            else{echo'<i class="fa-regular fa-circle-xmark" style="color:red;"></i>';}?>Sugar: </p>
+                            <p class='offer-details-item'> <?= $product['sugar']; ?></p>
+                        </div>
                     </ul>
                 </a>
             <?php } ?>
-            <!-- <article class="offer">
-
-
-            <h5>
-                Starter
-            </h5>
-            <p class="price">
-                $9/month
-            </p>
-            <li class="offer-detail">
-                <ul>Bandwidth</ul>
-                <ul>Onlinespace</ul>
-                <ul>Support 12.1</ul>
-                <ul>Domain free</ul>
-                <ul>Sugar Free</ul>
-            </li>
-            <button class="button-blue-1">Join now</button>
-        </article>
-        <article class="offer">
-            <h5>
-                Advanced
-            </h5>
-            <p class="price">
-                $19/month
-            </p>
-            <li class="offer-detail">
-                <ul>Bandwidth</ul>
-                <ul>Onlinespace</ul>
-                <ul>Support 12.1</ul>
-                <ul>Domain free</ul>
-                <ul>Sugar Free</ul>
-            </li>
-            <button class="button-blue-1">Join now</button>
-
-        </article>
-        <article class="offer">
-            <h5>
-                Professional
-            </h5>
-            <p class="price">
-                $29/month
-            </p>
-            <li class="offer-detail">
-                <ul>Bandwidth</ul>
-                <ul>Onlinespace</ul>
-                <ul>Support 12.1</ul>
-                <ul>Domain free</ul>
-                <ul>Sugar Free</ul>
-                <button class="button-blue-1">Join now</button>
-
-            </li>
-        </article>
-    </div>
-    </section> -->
-
             </main>
 </body>
 

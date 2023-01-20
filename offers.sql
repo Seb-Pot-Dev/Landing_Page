@@ -23,19 +23,20 @@ USE `landing_page`;
 CREATE TABLE IF NOT EXISTS `offers` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8mb3_bin NOT NULL DEFAULT '0',
-  `bandwith` int NOT NULL DEFAULT '0',
+  `price` int NOT NULL DEFAULT '0',
+  `bandwidth` int NOT NULL DEFAULT '0',
   `onlinespace` int NOT NULL DEFAULT '0',
-  `support xx` varchar(50) COLLATE utf8mb3_bin NOT NULL DEFAULT '0',
+  `support` varchar(50) COLLATE utf8mb3_bin NOT NULL DEFAULT '0',
   `domain` varchar(50) COLLATE utf8mb3_bin NOT NULL DEFAULT '0',
   `sugar` varchar(50) COLLATE utf8mb3_bin NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
 -- Listage des données de la table landing_page.offers : ~3 rows (environ)
-INSERT INTO `offers` (`id`, `name`, `bandwith`, `onlinespace`, `support xx`, `domain`, `sugar`) VALUES
-	(1, 'Starter', 1, 50, 'No', '1', 'No'),
-	(2, 'Advanced', 2, 1, 'Yes', '3', 'No'),
-	(3, 'Professional', 3, 2, 'Yes', 'unlimited', 'No');
+INSERT INTO `offers` (`id`, `name`, `price`, `bandwidth`, `onlinespace`, `support`, `domain`, `sugar`) VALUES
+	(1, 'Starter', 9, 1, 50, 'No', '1', 'No'),
+	(2, 'Advanced', 19, 2, 1, 'Yes', '3', 'No'),
+	(3, 'Professional', 29, 3, 2, 'Yes', 'unlimited', 'No');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -94,7 +94,7 @@ session_start();
         "</tr>",
         "<tr>",
         "<td class='deleteBasketCell' colspan=2><a class='deleteBasket'><a href='traitement.php?action=deleteBasket&class=$index'>Vider le panier</a></a></td>",
-        "<td class='backHomeCell' colspan=1><a class='backHome' href=`index.php`' type='button'>Retour a l'accueil</a></td>",
+        "<td class='backHomeCell' colspan=1><a class='backHome' href='index.php' >Retour a l'accueil</a></td>",
 
         "<td colspan=2>Passer au paiement</td>",
         "</tr>",

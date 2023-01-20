@@ -102,18 +102,30 @@ session_start();
                 </p>
             </form>
         </div>
-        
-        <button class="basket" onclick="location.href='recap.php'" type="button">
-        <i class="fa-solid fa-cart-shopping"></i> (<?php
-                $total = 0;
-                if (isset($_SESSION['products'])) {
-                    foreach ($_SESSION['products'] as $index => $product) {
-                        $total += $product['qtt'];
-                    }
-                }
-                echo $total ?>)
+        <!-- MODIFIER PRODUIT VIA FORM NAME/PRICE -->
+        <!-- <div class="admin-action">
+            <h1>Modifier un produit dans ma BDD</h1>
+            <form class="form-container" action="traitement.php?action=modifyProduct" method="post">
+                <p class='form-items'>
+                    <label>
+                        Nom du produit :
+                        <input type="text" name="name">
+                    </label>
+                </p>
+                <p class='form-items'>
+                    <label>
+                        Prix :
+                        <input type="number" name="price">
+                    </label>
+                </p>
+                <p>
+                    <input class="modifyProduct" type="submit" name="submit" value="Modifier le produit en BDD">
+                </p>
+            </form>
+        </div>
+    -->
 
-</button>
+
 
 
 </main>

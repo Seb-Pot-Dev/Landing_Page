@@ -135,4 +135,18 @@ switch ($_GET["action"]) {
         }
 
         break;
+    case "modifyProduct":
+        if (isset($_POST['submit'])) {
+            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS); //FILTER_SANITIZE_FULL_SPECIAL_CHARS(FILTER_SANITIZE_STRING is deprecated). It removes any special chars or HTMLcode. Security: no html injection possible.
+            $price = filter_input(INPUT_POST, "price", FILTER_SANITIZE_FULL_SPECIAL_CHARS); //FILTER_SANITIZE_FULL_SPECIAL_CHARS(FILTER_SANITIZE_STRING is deprecated). It removes any special chars or HTMLcode. Security: no html injection possible.
+
+            modifyProduct($name, $price);
+            //SET A SUCCESS MESSAGE
+            $_SESSION['message'] = "<p class='succes'>Le prix du produit ".$name." a été modifié. Nouvelle valeur: ".$price."</p>";
+            header("Location:admin.php");
+        } else {
+            //SET AN ERROR MESSAGE
+            $_SESSION['message'] = "<p class='error'>Il y a eu une erreur lors de la modification du produit ".$name.". Recommencez s'il vous plait.";
+        }
+
 }
