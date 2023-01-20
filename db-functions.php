@@ -67,7 +67,17 @@ function insertProduct($name, $price, $bandwidth, $onlinespace, $support, $domai
     // Préparation de la requête
     $storeStatement = $db->prepare($sqlInsert);
     // Exécution de la requête en passant les informations du produit en paramètre
-    $storeStatement->execute([':name' => $name, ':price' => $price, ':bandwidth' => $bandwidth, ':onlinespace' => $onlinespace, ':support' => $support, ':domain' => $domain, ':sugar' => $sugar]);
+    $storeStatement->execute(
+        [
+            ':name' => $name,
+            ':price' => $price,
+            ':bandwidth' => $bandwidth,
+            ':onlinespace' => $onlinespace,
+            ':support' => $support,
+            ':domain' => $domain,
+            ':sugar' => $sugar
+        ]
+    );
     // Récupération des résultats
     $store = $storeStatement->fetch();
     // Retourne les résultats
@@ -76,20 +86,29 @@ function insertProduct($name, $price, $bandwidth, $onlinespace, $support, $domai
 
 
 // Fonction pour modifier le contenu d'un produit
-function modifyProduct($name, $price){
+function modifyProduct($name, $price, $bandwidth, $onlinespace, $support, $domain, $sugar, $id)
+{
     //Appel de la fonction de connexion à la base de données
     $db = dbFunction();
-    $sqlUpdate = "UPDATE offers SET price='$price' WHERE name='$name'";
-
+    $sqlUpdate = "UPDATE offers SET price = :price, bandwidth = :bandwidth, onlinespace = :onlinespace, support = :support, domain = :domain, sugar = :sugar WHERE id = :id";
     //Preparation de la requête
     $statement = $db->prepare($sqlUpdate);
-    
+
     //Execution de la requête
-    $statement->execute();
+    $statement->execute(
+        [
+            ':id' => $id,
+            ':price' => $price,
+            ':bandwidth' => $bandwidth,
+            ':onlinespace' => $onlinespace,
+            ':support' => $support,
+            ':domain' => $domain,
+            ':sugar' => $sugar
+        ]
+    );
 
-        // Récupération des résultats
-        $store = $statement->fetch();
-        // Retourne les résultats
-        return $store;
-
+    // Récupération des résultats
+    $store = $statement->fetch();
+    // Retourne les résultats
+    return $store;
 }

@@ -10,6 +10,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a45e9c27c8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>Ajout produit en BDD</title>
 </head>
 
@@ -103,7 +106,7 @@ session_start();
             </form>
         </div>
         <!-- MODIFIER PRODUIT VIA FORM NAME/PRICE -->
-        <!-- <div class="admin-action">
+         <div class="admin-action">
             <h1>Modifier un produit dans ma BDD</h1>
             <form class="form-container" action="traitement.php?action=modifyProduct" method="post">
                 <p class='form-items'>
@@ -123,7 +126,50 @@ session_start();
                 </p>
             </form>
         </div>
-    -->
+        <!-- tentative modifier produit via FORM intégré dans un fichier edit.php -->
+        <div class="offers">
+            <?php //require db functions
+
+            require_once('db-functions.php');
+
+            $store = findAll();
+            foreach ($store as $product) {
+            ?>
+                <a class="offer-details-container" href="edit.php?id=<?= $product['id'] ?>">
+                    <?php // l'expression "<?=" est equivalent a <?php echo 
+                    ?>
+                    <h5><?= ucFirst($product['name']).'<i class="fa-regular fa-pen-to-square" style="color: var(--primary-color)"></i>'; ?></h5>
+                    <div class='big-price-container'><p class="big-blue-price">€ <?= $product['price']; ?></p>/month</div>
+                    <ul class="offer-details-list">
+                        <div class="details-box">
+                            <p class='offer-details-item'><i class="fa-regular fa-circle-check"></i>Bandwidth: </p>
+                            <p class='offer-details-item'> <?= $product['bandwidth']; ?> Mbps</p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><i class="fa-regular fa-circle-check"></i>Online space: </p>
+                            <p> <?= $product['onlinespace']; ?> Go</p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><?php if ($product['support']=='Yes')
+                            {echo'<i class="fa-regular fa-circle-check"></i>';}
+                            else{echo'<i class="fa-regular fa-circle-xmark" style="color:red;"></i>';}?>Support: </p>
+                            <p class='offer-details-item'> <?= $product['support']; ?></p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><?php if ($product['domain']>0)
+                            {echo'<i class="fa-regular fa-circle-check"></i>';}
+                            else{echo'<i class="fa-regular fa-circle-xmark" style="color:red;"></i>';}?>Domain: </p>
+                            <p class='offer-details-item'> <?= $product['domain']; ?></p>
+                        </div>
+                        <div class="details-box">
+                            <p class='offer-details-item'><?php if ($product['sugar']=='Yes')
+                            {echo'<i class="fa-regular fa-circle-check"></i>';}
+                            else{echo'<i class="fa-regular fa-circle-xmark" style="color:red;"></i>';}?>Sugar: </p>
+                            <p class='offer-details-item'> <?= $product['sugar']; ?></p>
+                        </div>
+                    </ul>
+                </a>
+            <?php } ?>
 
 
 

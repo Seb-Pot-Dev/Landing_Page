@@ -139,14 +139,18 @@ switch ($_GET["action"]) {
         if (isset($_POST['submit'])) {
             $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS); //FILTER_SANITIZE_FULL_SPECIAL_CHARS(FILTER_SANITIZE_STRING is deprecated). It removes any special chars or HTMLcode. Security: no html injection possible.
             $price = filter_input(INPUT_POST, "price", FILTER_SANITIZE_FULL_SPECIAL_CHARS); //FILTER_SANITIZE_FULL_SPECIAL_CHARS(FILTER_SANITIZE_STRING is deprecated). It removes any special chars or HTMLcode. Security: no html injection possible.
+            $bandwidth = filter_input(INPUT_POST, "bandwidth", FILTER_SANITIZE_FULL_SPECIAL_CHARS); //FILTER_SANITIZE_FULL_SPECIAL_CHARS(FILTER_SANITIZE_STRING is deprecated). It removes any special chars or HTMLcode. Security: no html injection possible.
+            $onlinespace = filter_input(INPUT_POST, "onlinespace", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //FILTER_VALIDATE_FLOAT validate the input only if its a Float. FILTER_FLAG_ALLOW_FRACTION does allow chars "," or "." for the decimals.
+            $support = filter_input(INPUT_POST, "support", FILTER_VALIDATE_INT); // FILTER_VALIDATE_INT = validate only if the input is an Integer different from 0 (wich is consider as Null)
+            $domain = filter_input(INPUT_POST, "domain", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sugar = filter_input(INPUT_POST, "sugar", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            modifyProduct($name, $price);
+            modifyProduct($name, $price, $bandwidth, $onlinespace, $support, $domain, $sugar, $_GET["id"]);
             //SET A SUCCESS MESSAGE
-            $_SESSION['message'] = "<p class='succes'>Le prix du produit ".$name." a été modifié. Nouvelle valeur: ".$price."</p>";
+            $_SESSION['message'] = "<p class='succes'>Le prix du produit " . $name . " a été modifié. Nouvelle valeur: " . $price . "</p>";
             header("Location:admin.php");
         } else {
             //SET AN ERROR MESSAGE
-            $_SESSION['message'] = "<p class='error'>Il y a eu une erreur lors de la modification du produit ".$name.". Recommencez s'il vous plait.";
+            $_SESSION['message'] = "<p class='error'>Il y a eu une erreur lors de la modification du produit " . $name . ". Recommencez s'il vous plait.";
         }
-
 }
